@@ -5,8 +5,6 @@ import org.springframework.data.domain.Pageable;
 import ua.vart.portfolio.domain.entity.Client;
 
 public interface ClientService {
-    Client findByCode(String code);
-
     Page<Client> findAll(Pageable pageable);
 
     Client create(Client client);

@@ -53,6 +53,6 @@ public class ClientController {
     @GetMapping
     public Page<ClientGetDto> findAll(Pageable pageable) {
         var clientsPage = clientService.findAll(pageable);
-        return clientMapper.toClientPageDto(clientsPage);
+        return clientMapper.toClientGetDtoPage(clientsPage);
     }
 }

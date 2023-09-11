@@ -1,6 +1,8 @@
 package ua.vart.portfolio.domain.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import ua.vart.portfolio.domain.entity.Code;
 
-public record ClientGetDto(Long id, String name, String lastName, String code) {
+import java.util.Set;
+
+public record ClientGetDto(Long id, String name, String lastName, Set<Code> codesSet) {
 }

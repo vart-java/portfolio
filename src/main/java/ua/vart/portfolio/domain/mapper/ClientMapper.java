@@ -10,7 +10,7 @@ import ua.vart.portfolio.domain.entity.Client;
 @Component
 public class ClientMapper {
     public ClientGetDto toClientGetDto(Client client) {
-        return new ClientGetDto(client.getId(), client.getName(), client.getLastName(), client.getCode());
+        return new ClientGetDto(client.getId(), client.getName(), client.getLastName(), client.getCodes());
     }
 
     public Client toClient(ClientCreateDto clientCreateDto) {
@@ -20,8 +20,8 @@ public class ClientMapper {
                 .build();
     }
 
-    public Page<ClientGetDto> toClientPageDto(Page<Client> clientPage) {
-        return new PageImpl<ClientGetDto>(
+    public Page<ClientGetDto> toClientGetDtoPage(Page<Client> clientPage) {
+        return new PageImpl<>(
                 clientPage.getContent().stream().map(this::toClientGetDto).toList(),
                 clientPage.getPageable(),
                 clientPage.getTotalElements()

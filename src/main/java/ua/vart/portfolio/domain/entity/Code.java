@@ -1,0 +1,32 @@
+package ua.vart.portfolio.domain.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+import ua.vart.portfolio.domain.base.BaseEntity;
+import ua.vart.portfolio.domain.enume.CodeStatus;
+
+import java.util.UUID;
+
+import static ua.vart.portfolio.domain.enume.CodeStatus.CREATED;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@EqualsAndHashCode(callSuper = true)
+public class Code extends BaseEntity {
+    @Column(unique = true)
+    private String value = UUID.randomUUID().toString().substring(0, 6);
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @OneToOne(mappedBy = "code", cascade = CascadeType.PERSIST)
+    private Feedback feedback;
+
+    @Enumerated(EnumType.STRING)
+    private CodeStatus codeStatus = CREATED;
+}

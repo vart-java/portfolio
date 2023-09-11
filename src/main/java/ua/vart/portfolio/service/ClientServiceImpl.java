@@ -24,10 +24,6 @@ public class ClientServiceImpl implements ClientService {
         return clientRepository.findById(id).orElseThrow(() -> new ClientNotFoundException("Client not found by id: " + id));
     }
 
-    public Client findByCode(String code) {
-        return clientRepository.findByCode(code).orElseThrow(() -> new ClientNotFoundException("Client not found by code: " + code));
-    }
-
     public Page<Client> findAll(Pageable pageable) {
         return clientRepository.findAll(pageable);
     }

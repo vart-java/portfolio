@@ -1,9 +1,6 @@
 package ua.vart.portfolio.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 import ua.vart.portfolio.domain.base.BaseEntity;
 
@@ -13,11 +10,12 @@ import ua.vart.portfolio.domain.base.BaseEntity;
 @AllArgsConstructor
 @Builder
 @Entity
+@EqualsAndHashCode(callSuper = true)
 public class Feedback extends BaseEntity {
 
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
-    private Client client;
+    @OneToOne
+    @JoinColumn(name = "code_id")
+    private Code code;
 }
