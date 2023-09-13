@@ -15,8 +15,9 @@ import static ua.vart.portfolio.domain.enume.CodeStatus.CREATED;
 @AllArgsConstructor
 @Builder
 @Entity
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = {"client", "feedback"})
 public class Code extends BaseEntity {
+    @Builder.Default
     @Column(unique = true)
     private String value = UUID.randomUUID().toString().substring(0, 6);
 
@@ -27,6 +28,7 @@ public class Code extends BaseEntity {
     @OneToOne(mappedBy = "code", cascade = CascadeType.PERSIST)
     private Feedback feedback;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     private CodeStatus codeStatus = CREATED;
 }

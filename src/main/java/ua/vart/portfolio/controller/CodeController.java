@@ -18,7 +18,7 @@ public class CodeController {
     private final CodeMapper codeMapper;
 
     @PostMapping
-    public ResponseEntity<Void> create(Long clientId) {
+    public ResponseEntity<Void> create(@RequestBody Long clientId) {
         var client = clientService.findById(clientId);
         var code = codeService.create(client);
         var uri = ServletUriComponentsBuilder
@@ -35,7 +35,7 @@ public class CodeController {
         return ResponseEntity.ok(codeMapper.toCodeGetDto(code));
     }
 
-    @GetMapping("/{value}")
+    @GetMapping("/value/{value}")
     public ResponseEntity<CodeGetDto> readByValue(@PathVariable String value) {
         var code = codeService.findByValue(value);
         return ResponseEntity.ok(codeMapper.toCodeGetDto(code));

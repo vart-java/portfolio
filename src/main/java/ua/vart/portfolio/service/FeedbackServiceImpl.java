@@ -36,7 +36,9 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Transactional
     public void delete(Long id) {
-        if (feedbackRepository.existsById(id)) feedbackRepository.deleteById(id);
-        else throw new FeedbackNotFoundException(("Feedback not found before delete, id: " + id));
+        var feedback = feedbackRepository.findById(id).orElseThrow(()->new FeedbackNotFoundException(("Feedback not found before delete, id: " + id)));
+        var code = feedback.getCode();
+        code.setFeedback(null);
+        feedbackRepository.delete(feedback);
     }
 }

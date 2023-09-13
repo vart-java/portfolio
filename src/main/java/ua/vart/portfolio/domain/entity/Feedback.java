@@ -10,7 +10,7 @@ import ua.vart.portfolio.domain.base.BaseEntity;
 @AllArgsConstructor
 @Builder
 @Entity
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = "code")
 public class Feedback extends BaseEntity {
 
     private String text;
