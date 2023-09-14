@@ -7,3 +7,5 @@ spring:
       ddl-auto: update
     database: h2
     open-in-view: false
+allowed:
+  urls: 127.0.0.1
