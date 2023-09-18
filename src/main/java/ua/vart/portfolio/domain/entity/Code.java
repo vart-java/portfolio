@@ -1,5 +1,6 @@
 package ua.vart.portfolio.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import ua.vart.portfolio.domain.base.BaseEntity;
@@ -21,10 +22,12 @@ public class Code extends BaseEntity {
     @Column(unique = true)
     private String value = UUID.randomUUID().toString().substring(0, 6);
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "code", cascade = CascadeType.PERSIST)
     private Feedback feedback;
 

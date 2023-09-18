@@ -54,6 +54,7 @@ public class FeedbackController {
         return ResponseEntity.noContent().build();
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping
     public Page<FeedbackGetDto> findAll(Pageable pageable) {
         return feedbackMapper.toFeedbackGetDtoPage(feedbackService.findAll(pageable));
