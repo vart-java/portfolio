@@ -13,6 +13,7 @@ import ua.vart.portfolio.domain.base.BaseEntity;
 @EqualsAndHashCode(callSuper = true, exclude = "code")
 public class Feedback extends BaseEntity {
 
+    @Column(length = 2048)
     private String text;
 
     @OneToOne
