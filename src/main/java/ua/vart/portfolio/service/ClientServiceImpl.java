@@ -9,6 +9,8 @@ import ua.vart.portfolio.domain.entity.Client;
 import ua.vart.portfolio.exception.ClientNotFoundException;
 import ua.vart.portfolio.repository.ClientRepository;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -39,5 +41,10 @@ public class ClientServiceImpl implements ClientService {
     public void delete(Long clientId) {
         if (clientRepository.existsById(clientId)) clientRepository.deleteById(clientId);
         else throw new ClientNotFoundException("Client not found before delete, id: " + clientId);
+    }
+
+    @Override
+    public Optional<Client> findByNameAndLastName(String name, String lastName) {
+        return clientRepository.findByNameAndAndLastName(name, lastName);
     }
 }

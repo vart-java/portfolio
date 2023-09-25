@@ -13,6 +13,5 @@ import java.util.Set;
 @Repository
 public interface CodeRepository extends JpaRepository<Code, Long> {
     Optional<Code> findCodeByValue(String value);
-
          Set<Code> findAllByClient(Client client);
 }

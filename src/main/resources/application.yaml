@@ -11,3 +11,5 @@ spring:
     user:
       name: admin
       password: password
+db-initializer:
+  enable: true

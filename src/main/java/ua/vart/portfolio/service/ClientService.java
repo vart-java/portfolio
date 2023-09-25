@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import ua.vart.portfolio.domain.entity.Client;
 
+import java.util.Optional;
+
 public interface ClientService {
     Page<Client> findAll(Pageable pageable);
 
@@ -14,4 +16,6 @@ public interface ClientService {
     Client update(Client client);
 
     void delete(Long id);
+
+    Optional<Client> findByNameAndLastName(String name, String lastName);
 }
